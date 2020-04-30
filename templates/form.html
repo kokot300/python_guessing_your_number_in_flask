@@ -1,0 +1,32 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta lang="en">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+          integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <title>I guess your number</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/flask.png') }}">
+</head>
+<body>
+<h1>I guess your number!</h1>
+<p>think about a number from 1 to 1000 and I will guess it in 10 attempts max.</p>
+
+<div>
+    {% if my_guess %}
+    <p>my guess is {{ my_guess }}</p>
+    {% endif %}
+
+    <form class="pure-form-stacked" method="post" action="/">
+
+        <fieldset>
+            <legend>Tell me the truth:</legend>
+            <label><input type="radio" name="answer" value="1"> Exactly</label><br>
+            <label><input type="radio" name="answer" value="2"> That's too much!</label><br>
+            <label><input type="radio" name="answer" value="3"> That's not enough!</label><br>
+        </fieldset>
+        <label> <input type="hidden" name="min" value="{{ min }}"></label>
+        <label> <input type="hidden" name="max" value="{{ max }}"></label>
+        <button type="submit" class="pure-button pure-button-primary button">Submit</button>
+    </form>
+</div>
+</body>
